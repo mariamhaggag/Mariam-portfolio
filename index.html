@@ -5,8 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mariam Haggag — Data & Operations Portfolio</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+  
 
   :root {
     --bg: #0a0e1a;
@@ -20,15 +22,15 @@
     --text: #e2e8f0;
     --text2: #94a3b8;
     --text3: #64748b;
-    --mono: 'JetBrains Mono', monospace;
-    --sans: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', 'Courier New', monospace;
+    --sans: 'Inter', Arial, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    background: var(--bg);
-    color: var(--text);
+    background: #0a0e1a;
+    color: #e2e8f0;
     font-family: var(--sans);
     min-height: 100vh;
     overflow-x: hidden;
@@ -84,7 +86,7 @@
     content: '';
     width: 20px; height: 1px; background: var(--accent);
   }
-  h1 {
+  h1 { color: #e2e8f0 !important;
     font-size: clamp(36px, 6vw, 72px);
     font-weight: 700; line-height: 1.05;
     text-align: center;
