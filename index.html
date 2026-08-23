@@ -3,377 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mariam Haggag — Data & Operations Portfolio</title>
+<title>Mariam Haggag — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-  
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-  :root {
-    --bg: #0a0e1a;
-    --bg2: #0f1525;
-    --bg3: #141c2e;
-    --border: #1e2d4a;
-    --accent: #3b82f6;
-    --accent2: #06b6d4;
-    --green: #10b981;
-    --amber: #f59e0b;
-    --text: #e2e8f0;
-    --text2: #94a3b8;
-    --text3: #64748b;
-    --mono: 'JetBrains Mono', 'Courier New', monospace;
-    --sans: 'Inter', Arial, sans-serif;
-  }
+:root {
+  --bg: #0a0e1a;
+  --bg2: #0f1525;
+  --bg3: #141c2e;
+  --border: #1e2d4a;
+  --accent: #3b82f6;
+  --accent2: #06b6d4;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --text: #e2e8f0;
+  --text2: #94a3b8;
+  --text3: #64748b;
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0e1a; color: #e2e8f0; font-family: 'Inter', Arial, sans-serif; overflow-x: hidden; }
 
-  body {
-    background: #0a0e1a;
-    color: #e2e8f0;
-    font-family: var(--sans);
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; background: rgba(10,14,26,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid #1e2d4a; }
+.nav-logo { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #3b82f6; }
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { color: #94a3b8; text-decoration: none; font-size: 13px; font-weight: 500; transition: color .2s; }
+.nav-links a:hover { color: #3b82f6; }
 
-  /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 16px 40px;
-    display: flex; align-items: center; justify-content: space-between;
-    background: rgba(10,14,26,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 13px; color: var(--accent);
-    letter-spacing: 0.05em;
-  }
-  .nav-links { display: flex; gap: 28px; }
-  .nav-links a {
-    color: var(--text2); text-decoration: none;
-    font-size: 13px; font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
+/* HERO */
+.hero { min-height: 100vh; padding-top: 100px; padding-bottom: 60px; padding-left: 40px; padding-right: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.hero-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3b82f6; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 20px; }
+.hero h1 { font-size: 64px; font-weight: 700; line-height: 1.05; text-align: center; margin-bottom: 16px; color: #e2e8f0; }
+.hero h1 span { background: linear-gradient(135deg, #3b82f6, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-sub { color: #94a3b8; font-size: 16px; text-align: center; max-width: 520px; line-height: 1.6; margin-bottom: 32px; }
+.award-banner { display: inline-flex; align-items: center; gap: 10px; background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.25); border-radius: 8px; padding: 10px 18px; margin-bottom: 32px; font-size: 13px; color: #f59e0b; }
+.status-dot { width: 6px; height: 6px; border-radius: 50%; background: #10b981; display: inline-block; animation: pulse 2s infinite; }
+@keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(16,185,129,.4)} 70%{box-shadow:0 0 0 8px rgba(16,185,129,0)} 100%{box-shadow:0 0 0 0 rgba(16,185,129,0)} }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    padding: 100px 40px 60px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -200px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-label {
-    font-family: var(--mono);
-    font-size: 11px; color: var(--accent);
-    letter-spacing: 0.15em; text-transform: uppercase;
-    margin-bottom: 20px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .hero-label::before {
-    content: '';
-    width: 20px; height: 1px; background: var(--accent);
-  }
-  h1 { color: #e2e8f0 !important;
-    font-size: clamp(36px, 6vw, 72px);
-    font-weight: 700; line-height: 1.05;
-    text-align: center;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-  }
-  h1 span {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .hero-sub {
-    color: var(--text2); font-size: 16px;
-    text-align: center; max-width: 520px;
-    line-height: 1.6; margin-bottom: 48px;
-  }
+.counters { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #1e2d4a; border: 1px solid #1e2d4a; border-radius: 12px; overflow: hidden; width: 100%; max-width: 800px; margin-bottom: 32px; }
+.counter-item { background: #0f1525; padding: 28px 24px; text-align: center; }
+.counter-num { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 600; color: #3b82f6; display: block; margin-bottom: 6px; }
+.counter-label { font-size: 11px; color: #64748b; text-transform: uppercase; letter-spacing: .08em; }
+.hero-cta { display: flex; gap: 12px; }
+.btn { padding: 11px 24px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; text-decoration: none; transition: all .2s; border: none; font-family: 'Inter', sans-serif; }
+.btn-primary { background: #3b82f6; color: white; }
+.btn-primary:hover { background: #2563eb; }
+.btn-ghost { background: transparent; color: #94a3b8; border: 1px solid #1e2d4a; }
+.btn-ghost:hover { border-color: #3b82f6; color: #3b82f6; }
 
-  /* COUNTERS */
-  .counters {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    width: 100%; max-width: 800px;
-    margin-bottom: 40px;
-  }
-  .counter-item {
-    background: var(--bg2);
-    padding: 28px 24px;
-    text-align: center;
-    transition: background 0.2s;
-  }
-  .counter-item:hover { background: var(--bg3); }
-  .counter-num {
-    font-family: var(--mono);
-    font-size: 32px; font-weight: 600;
-    color: var(--accent);
-    display: block; margin-bottom: 6px;
-    line-height: 1;
-  }
-  .counter-label {
-    font-size: 11px; color: var(--text3);
-    text-transform: uppercase; letter-spacing: 0.08em;
-  }
+/* SECTIONS */
+section { max-width: 1100px; margin: 0 auto; padding: 80px 40px; }
+.divider { height: 1px; background: #1e2d4a; margin: 0 40px; }
+.sec-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3b82f6; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 10px; }
+.sec-title { font-size: 32px; font-weight: 700; margin-bottom: 8px; color: #e2e8f0; }
+.sec-sub { color: #94a3b8; font-size: 15px; margin-bottom: 40px; line-height: 1.6; }
 
-  .hero-cta {
-    display: flex; gap: 12px;
-  }
-  .btn {
-    padding: 11px 24px; border-radius: 8px;
-    font-size: 13px; font-weight: 500;
-    cursor: pointer; text-decoration: none;
-    transition: all 0.2s; border: none;
-    font-family: var(--sans);
-  }
-  .btn-primary {
-    background: var(--accent); color: white;
-  }
-  .btn-primary:hover { background: #2563eb; transform: translateY(-1px); }
-  .btn-ghost {
-    background: transparent; color: var(--text2);
-    border: 1px solid var(--border);
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+/* CARDS */
+.card { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 12px; padding: 24px; transition: all .2s; }
+.card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+.card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #06b6d4; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 8px; }
+.card-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: #e2e8f0; }
+.card-desc { font-size: 13px; color: #64748b; line-height: 1.6; }
+.badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-family: 'JetBrains Mono', monospace; background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.3); color: #10b981; margin-top: 8px; margin-right: 4px; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-family: 'JetBrains Mono', monospace; background: rgba(59,130,246,.08); border: 1px solid rgba(59,130,246,.2); color: #06b6d4; margin-top: 8px; margin-right: 4px; }
 
-  /* SECTIONS */
-  section {
-    max-width: 1100px; margin: 0 auto;
-    padding: 80px 40px;
-  }
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px; color: var(--accent);
-    letter-spacing: 0.15em; text-transform: uppercase;
-    margin-bottom: 10px;
-  }
-  .section-title {
-    font-size: 32px; font-weight: 700;
-    margin-bottom: 8px; letter-spacing: -0.02em;
-  }
-  .section-sub {
-    color: var(--text2); font-size: 15px;
-    margin-bottom: 48px; max-width: 500px;
-    line-height: 1.6;
-  }
+/* CASE STUDIES */
+.case-grid { display: flex; flex-direction: column; gap: 12px; }
+.case-item { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 12px; padding: 28px 32px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 24px; align-items: center; transition: all .2s; }
+.case-item:hover { border-color: #3b82f6; transform: translateX(4px); }
+.case-val-red { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 600; color: #ef4444; }
+.case-val-green { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 600; color: #10b981; }
+.val-box { background: #0a0e1a; border-radius: 8px; padding: 14px; text-align: center; }
+.val-label { font-size: 10px; color: #64748b; text-transform: uppercase; margin-bottom: 4px; }
 
-  /* DIVIDER */
-  .divider {
-    height: 1px; background: var(--border);
-    margin: 0 40px;
-  }
+/* CHARTS */
+.charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.chart-card { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 12px; padding: 24px; }
+.chart-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; color: #e2e8f0; }
+.chart-sub { font-size: 12px; color: #64748b; margin-bottom: 16px; }
+.chart-wrap { position: relative; height: 200px; }
 
-  /* CASE STUDIES */
-  .cases { display: flex; flex-direction: column; gap: 2px; }
-  .case-item {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 28px 32px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 24px; align-items: center;
-    transition: all 0.2s;
-    cursor: default;
-    margin-bottom: 12px;
-  }
-  .case-item:hover {
-    border-color: var(--accent);
-    background: var(--bg3);
-    transform: translateX(4px);
-  }
-  .case-tag {
-    font-family: var(--mono);
-    font-size: 10px; color: var(--accent2);
-    text-transform: uppercase; letter-spacing: 0.1em;
-    margin-bottom: 8px;
-  }
-  .case-title {
-    font-size: 16px; font-weight: 600; margin-bottom: 6px;
-  }
-  .case-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
-  .case-before, .case-after {
-    background: var(--bg);
-    border-radius: 8px; padding: 16px;
-  }
-  .case-mini-label {
-    font-size: 10px; color: var(--text3);
-    text-transform: uppercase; letter-spacing: 0.08em;
-    margin-bottom: 4px;
-  }
-  .case-before .case-val { color: #ef4444; font-family: var(--mono); font-size: 20px; font-weight: 600; }
-  .case-after .case-val { color: var(--green); font-family: var(--mono); font-size: 20px; font-weight: 600; }
-  .case-result {
-    display: flex; flex-direction: column;
-    align-items: flex-start; gap: 6px;
-  }
-  .result-badge {
-    background: rgba(16,185,129,0.1);
-    border: 1px solid rgba(16,185,129,0.3);
-    color: var(--green);
-    font-size: 11px; font-family: var(--mono);
-    padding: 4px 10px; border-radius: 20px;
-  }
-  .result-text { font-size: 13px; color: var(--text2); }
+/* TIMELINE */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 1px; background: #1e2d4a; }
+.tl-item { position: relative; margin-bottom: 32px; }
+.tl-dot { position: absolute; left: -30px; top: 4px; width: 13px; height: 13px; border-radius: 50%; background: #0f1525; border: 2px solid #1e2d4a; }
+.tl-item.active .tl-dot { background: #3b82f6; border-color: #3b82f6; }
+.tl-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3b82f6; margin-bottom: 4px; }
+.tl-role { font-size: 15px; font-weight: 600; margin-bottom: 2px; color: #e2e8f0; }
+.tl-company { font-size: 12px; color: #64748b; margin-bottom: 8px; }
+.tl-desc { font-size: 13px; color: #94a3b8; line-height: 1.6; }
 
-  /* CHARTS SECTION */
-  .charts-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .chart-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 24px;
-  }
-  .chart-title {
-    font-size: 13px; font-weight: 600;
-    margin-bottom: 4px;
-  }
-  .chart-sub { font-size: 12px; color: var(--text3); margin-bottom: 20px; }
-  .chart-wrap { position: relative; height: 200px; }
+/* STRENGTHS */
+.strengths-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
+.strength-card { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 10px; padding: 18px 14px; text-align: center; transition: all .2s; }
+.strength-card:hover { border-color: #3b82f6; transform: translateY(-2px); }
+.strength-rank { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #3b82f6; margin-bottom: 6px; }
+.strength-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; color: #e2e8f0; }
+.strength-domain { font-size: 10px; color: #64748b; margin-bottom: 8px; text-transform: uppercase; }
+.strength-desc { font-size: 11px; color: #94a3b8; line-height: 1.5; }
 
-  /* TIMELINE */
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before {
-    content: ''; position: absolute;
-    left: 6px; top: 8px; bottom: 8px;
-    width: 1px; background: var(--border);
-  }
-  .tl-item {
-    position: relative; margin-bottom: 32px;
-  }
-  .tl-dot {
-    position: absolute; left: -30px; top: 4px;
-    width: 13px; height: 13px; border-radius: 50%;
-    background: var(--bg2);
-    border: 2px solid var(--border);
-    transition: border-color 0.2s;
-  }
-  .tl-item:hover .tl-dot { border-color: var(--accent); }
-  .tl-item.active .tl-dot { background: var(--accent); border-color: var(--accent); }
-  .tl-date {
-    font-family: var(--mono); font-size: 11px;
-    color: var(--accent); margin-bottom: 4px;
-  }
-  .tl-role { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
-  .tl-company { font-size: 12px; color: var(--text3); margin-bottom: 8px; }
-  .tl-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
-  .tl-tag {
-    display: inline-block; margin-top: 8px; margin-right: 6px;
-    padding: 3px 10px; border-radius: 20px;
-    font-size: 11px; font-family: var(--mono);
-    background: rgba(59,130,246,0.08);
-    border: 1px solid rgba(59,130,246,0.2);
-    color: var(--accent2);
-  }
+/* CONTACT */
+.contact-box { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 16px; padding: 48px; text-align: center; }
+.contact-box h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; color: #e2e8f0; }
+.contact-box p { color: #94a3b8; margin-bottom: 28px; font-size: 15px; }
+.contact-links { display: flex; gap: 12px; justify-content: center; }
 
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-  }
-  .skill-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 20px;
-    transition: all 0.2s;
-  }
-  .skill-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  .skill-icon { font-size: 22px; margin-bottom: 10px; }
-  .skill-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .skill-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+/* CORPORATE TIMELINE */
+.corp-timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: #1e2d4a; border: 1px solid #1e2d4a; border-radius: 12px; overflow: hidden; margin-bottom: 48px; }
+.corp-year { background: #0f1525; padding: 28px 20px; text-align: center; }
+.corp-year:hover { background: #141c2e; }
+.corp-year-num { font-family: 'JetBrains Mono', monospace; font-size: 22px; font-weight: 600; margin-bottom: 8px; }
+.corp-year-title { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #e2e8f0; }
+.corp-year-desc { font-size: 11px; color: #64748b; line-height: 1.6; }
 
-  /* CONTACT */
-  .contact-box {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 48px;
-    text-align: center;
-  }
-  .contact-box h2 { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .contact-box p { color: var(--text2); margin-bottom: 28px; font-size: 15px; }
-  .contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.two-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+.five-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; margin-bottom: 40px; }
+.vid-card { background: #0f1525; border: 1px solid #1e2d4a; border-radius: 10px; padding: 18px; text-align: center; transition: all .2s; }
+.vid-card:hover { border-color: #3b82f6; }
+.vid-icon { font-size: 26px; margin-bottom: 10px; }
+.vid-name { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #e2e8f0; }
+.vid-desc { font-size: 11px; color: #64748b; }
 
-  /* AWARD BADGE */
-  .award-banner {
-    display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(245,158,11,0.08);
-    border: 1px solid rgba(245,158,11,0.25);
-    border-radius: 8px;
-    padding: 10px 18px;
-    margin-bottom: 40px;
-    font-size: 13px; color: var(--amber);
-  }
+.quote-box { padding: 32px; background: #0f1525; border: 1px solid #1e2d4a; border-left: 3px solid #3b82f6; border-radius: 12px; }
+.quote-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #3b82f6; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .1em; }
+.quote-text { font-size: 15px; line-height: 1.7; color: #e2e8f0; }
+.quote-sub { margin-top: 12px; font-size: 13px; color: #94a3b8; }
 
-  /* SCROLL FADE */
-  .fade-in {
-    opacity: 0; transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .fade-in.visible { opacity: 1; transform: translateY(0); }
+/* SKILLS */
+.skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
 
-  /* STATUS DOT */
-  .status-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--green);
-    display: inline-block;
-    box-shadow: 0 0 0 0 rgba(16,185,129,0.4);
-    animation: pulse 2s infinite;
-  }
-  @keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
-    70% { box-shadow: 0 0 0 8px rgba(16,185,129,0); }
-    100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
-    .counters { grid-template-columns: repeat(2, 1fr); }
-    .case-item { grid-template-columns: 1fr; }
-    .charts-grid { grid-template-columns: 1fr; }
-    .skills-grid { grid-template-columns: repeat(2, 1fr); }
-    section { padding: 60px 20px; }
-    .contact-box { padding: 32px 20px; }
-  }
+@media(max-width:768px) {
+  nav { padding: 14px 20px; }
+  .hero h1 { font-size: 36px; }
+  .counters { grid-template-columns: repeat(2,1fr); }
+  .case-item { grid-template-columns: 1fr; }
+  .charts-grid, .two-grid { grid-template-columns: 1fr; }
+  .strengths-grid, .five-grid { grid-template-columns: repeat(2,1fr); }
+  .skills-grid { grid-template-columns: repeat(2,1fr); }
+  section { padding: 60px 20px; }
+  .contact-box { padding: 32px 20px; }
+  .corp-timeline { grid-template-columns: repeat(2,1fr); }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">mariam.haggag // portfolio</div>
   <div class="nav-links">
     <a href="#work">Work</a>
-    <a href="#corporate">Corporate</a><a href="#samples">Samples</a><a href="#data">Numbers</a><a href="#strengths">Strengths</a>
+    <a href="#corporate">Corporate</a>
+    <a href="#samples">Samples</a>
+    <a href="#data">Numbers</a>
+    <a href="#strengths">Strengths</a>
     <a href="#journey">Journey</a>
     <a href="#contact">Contact</a>
   </div>
@@ -381,33 +165,16 @@
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-label">Data & Operations Analyst</div>
+  <div class="hero-label">Data &amp; Operations Analyst</div>
   <h1>I make<br><span>messy data</span><br>work.</h1>
-  <p class="hero-sub">5 years building the systems, dashboards, and processes that keep a 800-person healthcare organization running.</p>
-
-  <div class="award-banner">
-    🏆 Unsung Heroes Award — Alfa Scan &nbsp;·&nbsp; <span class="status-dot"></span>&nbsp; Currently open to opportunities
-  </div>
-
+  <p class="hero-sub">5 years building the systems, dashboards, and processes that keep an 800-person healthcare organization running.</p>
+  <div class="award-banner">🏆 Unsung Heroes Award — Alfa Scan &nbsp;·&nbsp; <span class="status-dot"></span>&nbsp; Currently open to opportunities</div>
   <div class="counters">
-    <div class="counter-item">
-      <span class="counter-num" data-target="800">0</span>
-      <span class="counter-label">Employees Tracked</span>
-    </div>
-    <div class="counter-item">
-      <span class="counter-num" data-target="30155">0</span>
-      <span class="counter-label">Records Validated</span>
-    </div>
-    <div class="counter-item">
-      <span class="counter-num" data-target="95" data-suffix="%">0</span>
-      <span class="counter-label">Approval Success Rate</span>
-    </div>
-    <div class="counter-item">
-      <span class="counter-num" data-target="20" data-prefix="20+">0</span>
-      <span class="counter-label">Dashboards Built</span>
-    </div>
+    <div class="counter-item"><span class="counter-num" data-target="800">0</span><span class="counter-label">Employees Tracked</span></div>
+    <div class="counter-item"><span class="counter-num" data-target="30155">0</span><span class="counter-label">Records Validated</span></div>
+    <div class="counter-item"><span class="counter-num" data-target="95" data-suffix="%">0</span><span class="counter-label">Approval Success Rate</span></div>
+    <div class="counter-item"><span class="counter-num" data-prefix="20+">0</span><span class="counter-label">Dashboards Built</span></div>
   </div>
-
   <div class="hero-cta">
     <a href="#work" class="btn btn-primary">See My Work</a>
     <a href="#contact" class="btn btn-ghost">Get In Touch</a>
@@ -418,112 +185,66 @@
 
 <!-- CASE STUDIES -->
 <section id="work">
-  <div class="fade-in">
-    <div class="section-label">Case Studies</div>
-    <div class="section-title">Problems I fixed.</div>
-    <p class="section-sub">Real challenges, real solutions, real numbers.</p>
-  </div>
-
-  <div class="cases fade-in">
+  <div class="sec-label">Case Studies</div>
+  <div class="sec-title">Problems I fixed.</div>
+  <p class="sec-sub">Real challenges, real solutions, real numbers.</p>
+  <div class="case-grid">
 
     <div class="case-item">
       <div>
-        <div class="case-tag">Data Governance</div>
-        <div class="case-title">Broken Physician Database</div>
-        <div class="case-desc">32,000 inconsistent records across branches — wrong names, duplicate entries, no standard coding for physicians or hospitals.</div>
+        <div class="card-tag">Data Governance — Physician Database</div>
+        <div class="card-title">32,000 Entries. 6,000 Were Real.</div>
+        <div class="card-desc">Referring physician data was completely uncontrolled. Random additions, duplicates, ghost physicians, missing info, and no standard coding — the same doctor could exist 5 times under 5 different names.</div>
+        <div class="card-desc" style="margin-top:8px;color:#94a3b8;">Built a standardized coding system. Created a Google Form as the only entry point — requiring an attached prescription or official document. The process now continues without depending on one person.</div>
       </div>
       <div style="display:flex;gap:12px;align-items:center;">
-        <div class="case-before">
-          <div class="case-mini-label">Before</div>
-          <div class="case-val">32,000</div>
-          <div style="font-size:11px;color:var(--text3)">messy records</div>
-        </div>
-        <div style="color:var(--text3);font-size:18px;">→</div>
-        <div class="case-after">
-          <div class="case-mini-label">After</div>
-          <div class="case-val">6,000</div>
-          <div style="font-size:11px;color:var(--text3)">clean records</div>
-        </div>
+        <div class="val-box"><div class="val-label">Before</div><div class="case-val-red">32,000</div><div style="font-size:11px;color:#64748b;">unvalidated</div></div>
+        <div style="color:#64748b;font-size:18px;">→</div>
+        <div class="val-box"><div class="val-label">After</div><div class="case-val-green">6,000</div><div style="font-size:11px;color:#64748b;">verified</div></div>
       </div>
-      <div class="case-result">
-        <span class="result-badge">6,000 clean ✓</span>
-        <span class="result-text">Unified entry standards across all branches. One source of truth.</span>
-      </div>
+      <div><span class="badge">Controlled Process ✓</span><div class="card-desc" style="margin-top:8px;">Every new physician now requires a document. Coded to prevent duplicates and ghost entries. Scalable beyond one person.</div></div>
     </div>
 
     <div class="case-item">
       <div>
-        <div class="case-tag">Workflow Automation</div>
-        <div class="case-title">Paper-Based Contracts</div>
-        <div class="case-desc">Contracts department drowning in manual paperwork — no tracking, no templates, no digital trail.</div>
+        <div class="card-tag">Digital Transformation</div>
+        <div class="card-title">Paper-Based Contracts</div>
+        <div class="card-desc">Contracts department drowning in manual paperwork — no tracking, no templates, no digital trail.</div>
       </div>
       <div style="display:flex;gap:12px;align-items:center;">
-        <div class="case-before">
-          <div class="case-mini-label">Before</div>
-          <div class="case-val">100%</div>
-          <div style="font-size:11px;color:var(--text3)">manual paper</div>
-        </div>
-        <div style="color:var(--text3);font-size:18px;">→</div>
-        <div class="case-after">
-          <div class="case-mini-label">After</div>
-          <div class="case-val">0%</div>
-          <div style="font-size:11px;color:var(--text3)">paper needed</div>
-        </div>
+        <div class="val-box"><div class="val-label">Before</div><div class="case-val-red">100%</div><div style="font-size:11px;color:#64748b;">manual paper</div></div>
+        <div style="color:#64748b;font-size:18px;">→</div>
+        <div class="val-box"><div class="val-label">After</div><div class="case-val-green">0%</div><div style="font-size:11px;color:#64748b;">paper needed</div></div>
       </div>
-      <div class="case-result">
-        <span class="result-badge">Paperless ✓</span>
-        <span class="result-text">E-signatures, automated templates, full digital audit trail.</span>
-      </div>
+      <div><span class="badge">Paperless ✓</span><div class="card-desc" style="margin-top:8px;">E-signatures, electronic stamps, automated templates, full digital audit trail.</div></div>
     </div>
 
     <div class="case-item">
       <div>
-        <div class="case-tag">Data Validation</div>
-        <div class="case-title">Zero Validation System</div>
-        <div class="case-desc">No way to verify form entries against source documents — errors accumulated silently across departments.</div>
+        <div class="card-tag">Data Validation</div>
+        <div class="card-title">Zero Validation System</div>
+        <div class="card-desc">No way to verify form entries against source documents — errors accumulated silently.</div>
       </div>
       <div style="display:flex;gap:12px;align-items:center;">
-        <div class="case-before">
-          <div class="case-mini-label">Before</div>
-          <div class="case-val">0</div>
-          <div style="font-size:11px;color:var(--text3)">monthly checks</div>
-        </div>
-        <div style="color:var(--text3);font-size:18px;">→</div>
-        <div class="case-after">
-          <div class="case-mini-label">After</div>
-          <div class="case-val">4,000</div>
-          <div style="font-size:11px;color:var(--text3)">checks/month</div>
-        </div>
+        <div class="val-box"><div class="val-label">Before</div><div class="case-val-red">0</div><div style="font-size:11px;color:#64748b;">monthly checks</div></div>
+        <div style="color:#64748b;font-size:18px;">→</div>
+        <div class="val-box"><div class="val-label">After</div><div class="case-val-green">4,000</div><div style="font-size:11px;color:#64748b;">checks/month</div></div>
       </div>
-      <div class="case-result">
-        <span class="result-badge">30,155 total</span>
-        <span class="result-text">Built end-to-end Google Forms validation. Every entry verified.</span>
-      </div>
+      <div><span class="badge">30,155 total ✓</span><div class="card-desc" style="margin-top:8px;">Built end-to-end Google Forms validation. Every entry verified against source documents.</div></div>
     </div>
 
     <div class="case-item">
       <div>
-        <div class="case-tag">KPI Infrastructure</div>
-        <div class="case-title">800 People, No Visibility</div>
-        <div class="case-desc">8 departments, medical and non-medical, with no unified way to track or compare performance month-over-month.</div>
+        <div class="card-tag">KPI Reporting</div>
+        <div class="card-title">800 People, No Visibility</div>
+        <div class="card-desc">8 departments with no unified way to track or compare performance month-over-month.</div>
       </div>
       <div style="display:flex;gap:12px;align-items:center;">
-        <div class="case-before">
-          <div class="case-mini-label">Before</div>
-          <div class="case-val">0</div>
-          <div style="font-size:11px;color:var(--text3)">KPI dashboards</div>
-        </div>
-        <div style="color:var(--text3);font-size:18px;">→</div>
-        <div class="case-after">
-          <div class="case-mini-label">After</div>
-          <div class="case-val">150+</div>
-          <div style="font-size:11px;color:var(--text3)">live dashboards</div>
-        </div>
+        <div class="val-box"><div class="val-label">Before</div><div class="case-val-red">0</div><div style="font-size:11px;color:#64748b;">KPI dashboards</div></div>
+        <div style="color:#64748b;font-size:18px;">→</div>
+        <div class="val-box"><div class="val-label">After</div><div class="case-val-green">150+</div><div style="font-size:11px;color:#64748b;">live dashboards</div></div>
       </div>
-      <div class="case-result">
-        <span class="result-badge">Self-service ✓</span>
-        <span class="result-text">Each department head sees their team's data in real time.</span>
-      </div>
+      <div><span class="badge">Self-service ✓</span><div class="card-desc" style="margin-top:8px;">Participated in KPI design sessions with management. Executed monthly reporting and implemented all adjustments.</div></div>
     </div>
 
   </div>
@@ -531,48 +252,106 @@
 
 <div class="divider"></div>
 
-<!-- CHARTS -->
-<section id="data">
-  <div class="fade-in">
-    <div class="section-label">By The Numbers</div>
-    <div class="section-title">The data behind the work.</div>
-    <p class="section-sub">Visualized from real operational data at Alfa Scan.</p>
+<!-- CORPORATE -->
+<section id="corporate">
+  <div class="sec-label">Corporate Operations</div>
+  <div class="sec-title">From paper to performance.</div>
+  <p class="sec-sub">A 3-year transformation of corporate contracts and sales support at Alfa Scan — built from scratch, documented, automated, and made scalable.</p>
+
+  <div class="corp-timeline">
+    <div class="corp-year"><div class="corp-year-num" style="color:#ef4444;">2023</div><div class="corp-year-title">Manual</div><div class="corp-year-desc">Paper documents. Phone calls. Individual memory. No tracking, no templates, no visibility.</div></div>
+    <div class="corp-year"><div class="corp-year-num" style="color:#f59e0b;">2024</div><div class="corp-year-title">Structured</div><div class="corp-year-desc">WhatsApp group for requests. Task-tracking sheets. Master data. Electronic templates with digital stamps. ~90 price lists prepared, ~80% of companies renewed in H1.</div></div>
+    <div class="corp-year"><div class="corp-year-num" style="color:#3b82f6;">2025</div><div class="corp-year-title">Digital</div><div class="corp-year-desc">Google Form for all requests with auto-tracking. Historical data prepared in Excel. 67 companies renewed in January 2025 alone.</div></div>
+    <div class="corp-year"><div class="corp-year-num" style="color:#10b981;">2026</div><div class="corp-year-title">Performance-Driven</div><div class="corp-year-desc">KPIs introduced in March 2026. Dashboards with customer segmentation, account owners, and monthly targets.</div></div>
   </div>
 
-  <div class="charts-grid fade-in">
+  <div class="two-grid">
+    <div class="card"><div class="card-tag">System & Data Management</div><div class="card-title">Millensys & CRM Control</div><div class="card-desc">Managed all corporate entity additions, removals, and edits on Millensys. Updated price lists for all active clients. In March 2024, exam prices were updated and a CT contrast exam was introduced, requiring different price lists and continuous CRM adjustments per entity.</div><span class="tag">Millensys</span><span class="tag">CRM</span><span class="tag">Oracle</span></div>
+    <div class="card"><div class="card-tag">Corporate Sales Support</div><div class="card-title">Contracts, Pricing & Letters</div><div class="card-desc">Handled new contracts (deferred and cash), price quotations, discount letters, and price increase letters. Built electronic templates for all document types with digital stamps, eliminating manual drafting entirely.</div><span class="tag">E-signatures</span><span class="tag">Digital Stamps</span><span class="tag">Templates</span></div>
+    <div class="card"><div class="card-tag">Internal Coordination</div><div class="card-title">Finance, Collections & Reception</div><div class="card-desc">Maintained shared folder with Finance for all price lists, contracts, and discount sheets. Updated Collections tracking sheet with every new or removed entity. Sent operating instruction updates to Reception and Call Center in real time.</div><span class="tag">Shared Folders</span><span class="tag">Tracking Sheets</span></div>
+    <div class="card"><div class="card-tag">IT Coordination</div><div class="card-title">Oracle & Price List Requests</div><div class="card-desc">Sent monthly retroactive pricing lists to IT. Submitted Oracle integration requests for new entities. Coordinated new price list creation at year-start or when volume required it.</div><span class="tag">Oracle</span><span class="tag">IT Integration</span></div>
+    <div class="card"><div class="card-tag">Physician Sales Support</div><div class="card-title">Doctors & Hospitals</div><div class="card-desc">Onboarded new physicians and hospitals into Millensys. Generated monthly revenue reports per physician. Prepared contracts, price offers, and renewal documents for hospital accounts.</div><span class="tag">Physician Data</span><span class="tag">Revenue Reports</span></div>
+    <div class="card" style="border-color:rgba(16,185,129,.3)"><div class="card-tag" style="color:#10b981;">Knowledge Management</div><div class="card-title">Booklet, Videos & Training</div><div class="card-desc">Created a full Knowledge Base and Corporate Booklet. Recorded step-by-step training videos for every key workflow. Trained one team member in 2025 and another in 2026 using a different approach each time.</div><span class="badge">Knowledge Base</span><span class="badge">Training Videos</span></div>
+  </div>
 
-    <div class="chart-card">
-      <div class="chart-title">Teams Breakdown</div>
-      <div class="chart-sub">800 employees across 8 departments</div>
-      <div class="chart-wrap">
-        <canvas id="teamsChart"></canvas>
-      </div>
+  <div class="five-grid">
+    <div class="vid-card"><div class="vid-icon">🎬</div><div class="vid-name">ERP Contracts</div><div class="vid-desc">Full contracts workflow on the ERP system</div></div>
+    <div class="vid-card"><div class="vid-icon">🎬</div><div class="vid-name">Add / Remove Exams</div><div class="vid-desc">How to add or delete exam types per entity</div></div>
+    <div class="vid-card"><div class="vid-icon">🎬</div><div class="vid-name">Discount Rates</div><div class="vid-desc">Setting and updating discount rates per client</div></div>
+    <div class="vid-card"><div class="vid-icon">🎬</div><div class="vid-name">Create Price Lists</div><div class="vid-desc">Building and copying new price lists from scratch</div></div>
+    <div class="vid-card"><div class="vid-icon">🎬</div><div class="vid-name">2025 Full Overview</div><div class="vid-desc">Complete end-to-end department walkthrough</div></div>
+  </div>
+
+  <div class="quote-box">
+    <div class="quote-label">The Real Achievement</div>
+    <div class="quote-text">"The real achievement was not simply creating spreadsheets or forms. It was transforming a process that depended heavily on paper, memory and individual follow-up into a more structured, documented, trackable, collaborative and scalable workflow."</div>
+    <div class="quote-sub">I did not just manage the process. I evolved it. I built something that can continue, scale, and improve beyond one person.</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SAMPLES -->
+<section id="samples">
+  <div class="sec-label">Work Samples</div>
+  <div class="sec-title">Real tools I built.</div>
+  <p class="sec-sub">Systems used daily by the team at Alfa Scan.</p>
+  <div class="two-grid" style="margin-bottom:40px;">
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="width:100%;height:180px;background:#141c2e;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:12px;font-family:'JetBrains Mono',monospace;border-radius:12px 12px 0 0;">[ Screenshot — data blurred for confidentiality ]</div>
+      <div style="padding:18px 20px;"><div class="card-tag">Workflow Automation</div><div class="card-title">Operating Instructions Form 2026</div><div class="card-desc">Google Form for collecting operating instructions across all Alfa Scan branches — with file upload, validation, and auto-routing.</div></div>
     </div>
-
-    <div class="chart-card">
-      <div class="chart-title">Validation Volume Growth</div>
-      <div class="chart-sub">Monthly Google Forms responses over time</div>
-      <div class="chart-wrap">
-        <canvas id="growthChart"></canvas>
-      </div>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="width:100%;height:180px;background:#141c2e;display:flex;align-items:center;justify-content:center;color:#64748b;font-size:12px;font-family:'JetBrains Mono',monospace;border-radius:12px 12px 0 0;">[ Screenshot — data blurred for confidentiality ]</div>
+      <div style="padding:18px 20px;"><div class="card-tag">Live Dashboard</div><div class="card-title">Contracts & Renewals Registry 2026</div><div class="card-desc">Live contracts dashboard connected directly to Google Sheets — real-time search, filters by status, account manager, supervisor, and team. Auto-updates every minute.</div></div>
     </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">📄</div><div class="card-title">Contract Templates</div><div class="card-desc">Standardized templates for all contract types. One-click generation.</div><span class="badge">Automated ✓</span></div>
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">✍️</div><div class="card-title">Electronic Signatures</div><div class="card-desc">E-signature workflow replacing physical signatures — full audit trail, zero paper.</div><span class="badge">Paperless ✓</span></div>
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">🔏</div><div class="card-title">Electronic Stamps</div><div class="card-desc">Digital official stamps for agreements and correspondence.</div><span class="badge">Digital ✓</span></div>
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">📬</div><div class="card-title">Official Letters</div><div class="card-desc">Templated correspondence — price notices, renewal reminders, client communication.</div><span class="badge">Standardized ✓</span></div>
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">🗂️</div><div class="card-title">Document Archive</div><div class="card-desc">Organized digital filing for all contracts — searchable, always accessible.</div><span class="badge">Organized ✓</span></div>
+    <div class="card" style="text-align:center;"><div style="font-size:32px;margin-bottom:12px;">⚡</div><div class="card-title">Agreement Workflow</div><div class="card-desc">End-to-end process from contract request to signed agreement.</div><span class="badge">Streamlined ✓</span></div>
+  </div>
+</section>
 
-    <div class="chart-card">
-      <div class="chart-title">Medical vs Non-Medical</div>
-      <div class="chart-sub">Workforce distribution by category</div>
-      <div class="chart-wrap">
-        <canvas id="pieChart"></canvas>
-      </div>
-    </div>
+<div class="divider"></div>
 
-    <div class="chart-card">
-      <div class="chart-title">Approvals Performance</div>
-      <div class="chart-sub">Daily processing rate & success</div>
-      <div class="chart-wrap">
-        <canvas id="approvalsChart"></canvas>
-      </div>
-    </div>
+<!-- NUMBERS -->
+<section id="data">
+  <div class="sec-label">By The Numbers</div>
+  <div class="sec-title">The data behind the work.</div>
+  <p class="sec-sub">Visualized from real operational data at Alfa Scan.</p>
+  <div class="charts-grid">
+    <div class="chart-card"><div class="chart-title">Teams Breakdown</div><div class="chart-sub">800 employees across 8 departments</div><div class="chart-wrap"><canvas id="teamsChart"></canvas></div></div>
+    <div class="chart-card"><div class="chart-title">Validation Volume Growth</div><div class="chart-sub">Monthly Google Forms responses over time</div><div class="chart-wrap"><canvas id="growthChart"></canvas></div></div>
+    <div class="chart-card"><div class="chart-title">Medical vs Non-Medical</div><div class="chart-sub">Workforce distribution</div><div class="chart-wrap"><canvas id="pieChart"></canvas></div></div>
+    <div class="chart-card"><div class="chart-title">Approvals Performance</div><div class="chart-sub">Daily processing rate & success ~95%</div><div class="chart-wrap"><canvas id="approvalsChart"></canvas></div></div>
+  </div>
+</section>
 
+<div class="divider"></div>
+
+<!-- STRENGTHS -->
+<section id="strengths">
+  <div class="sec-label">CliftonStrengths® — Gallup Assessment</div>
+  <div class="sec-title">How I naturally work.</div>
+  <p class="sec-sub">My top strengths from the official Gallup CliftonStrengths 34 assessment — measured, not claimed.</p>
+  <div class="strengths-grid">
+    <div class="strength-card"><div class="strength-rank">#1</div><div class="strength-name">Responsibility</div><div class="strength-domain">Executing</div><div class="strength-desc">When I commit to something, it gets done. No follow-up needed.</div></div>
+    <div class="strength-card"><div class="strength-rank">#2</div><div class="strength-name">Relator</div><div class="strength-domain">Relationship</div><div class="strength-desc">I build deep, trust-based connections with the people I work with.</div></div>
+    <div class="strength-card"><div class="strength-rank">#3</div><div class="strength-name">Arranger</div><div class="strength-domain">Executing</div><div class="strength-desc">I see how all the pieces fit and rearrange them for maximum efficiency.</div></div>
+    <div class="strength-card"><div class="strength-rank">#4</div><div class="strength-name">Belief</div><div class="strength-domain">Executing</div><div class="strength-desc">My values guide every decision. I work with conviction and don't cut corners.</div></div>
+    <div class="strength-card"><div class="strength-rank">#5</div><div class="strength-name">Learner</div><div class="strength-domain">Strategic</div><div class="strength-desc">Genuinely addicted to learning. Every course fills a real gap.</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;">
+    <div class="strength-card"><div class="strength-rank">#6</div><div class="strength-name">Ideation</div><div class="strength-domain">Strategic</div><div class="strength-desc">The Google Forms system, the booklet, the training videos — none were asked for. I saw a better way.</div></div>
+    <div class="strength-card"><div class="strength-rank">#7</div><div class="strength-name">Empathy</div><div class="strength-domain">Relationship</div><div class="strength-desc">The training I built gets used because it was designed for how people actually learn.</div></div>
+    <div class="strength-card"><div class="strength-rank">#8</div><div class="strength-name">Individualization</div><div class="strength-domain">Relationship</div><div class="strength-desc">I trained two people in two years using two different approaches — because they were different people.</div></div>
+  </div>
+  <div style="margin-top:14px;padding:14px 20px;background:#0f1525;border:1px solid #1e2d4a;border-radius:10px;font-size:12px;color:#64748b;text-align:center;">
+    Lead Domain: <strong style="color:#3b82f6;">Executing</strong> &nbsp;·&nbsp; By <strong style="color:#94a3b8;">Gallup CliftonStrengths® 34</strong> &nbsp;·&nbsp; Completed: <strong style="color:#94a3b8;">September 2025</strong>
   </div>
 </section>
 
@@ -580,48 +359,34 @@
 
 <!-- JOURNEY -->
 <section id="journey">
-  <div class="fade-in">
-    <div class="section-label">Career Journey</div>
-    <div class="section-title">How I got here.</div>
-    <p class="section-sub">Every role built on the last one.</p>
-  </div>
-
-  <div class="timeline fade-in">
-
+  <div class="sec-label">Career Journey</div>
+  <div class="sec-title">How I got here.</div>
+  <p class="sec-sub">Every role built on the last one.</p>
+  <div class="timeline">
     <div class="tl-item active">
       <div class="tl-dot"></div>
       <div class="tl-date">OCT 2023 — PRESENT</div>
       <div class="tl-role">Business Operations & Data Control Analyst</div>
       <div class="tl-company">Alfa Scan — Data, Performance & Contracts Department</div>
       <div class="tl-desc">Participated in KPI design sessions with department management, executed monthly KPI reporting for 800 employees across 8 departments, and implemented all adjustments. Led paperless transformation of contracts operations. Since Sep 2025, running the full department independently after my manager left.</div>
-      <span class="tl-tag">Incorta</span>
-      <span class="tl-tag">Power BI</span>
-      <span class="tl-tag">KPI Design</span>
-      <span class="tl-tag">Contracts</span>
-      <span class="tl-tag">Acting Manager</span>
+      <span class="tag">Incorta</span><span class="tag">Power BI</span><span class="tag">KPI Reporting</span><span class="tag">Contracts</span><span class="tag">Acting Manager</span>
     </div>
-
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">FEB 2022 — SEP 2023</div>
       <div class="tl-role">Approvals Specialist</div>
       <div class="tl-company">Alfa Scan, Egypt</div>
       <div class="tl-desc">80 insurance approvals per shift, 95% success rate. Learned precision, documentation, and how to work under real pressure.</div>
-      <span class="tl-tag">Healthcare</span>
-      <span class="tl-tag">Insurance</span>
-      <span class="tl-tag">Data Validation</span>
+      <span class="tag">Healthcare</span><span class="tag">Insurance</span><span class="tag">Data Validation</span>
     </div>
-
     <div class="tl-item">
       <div class="tl-dot"></div>
       <div class="tl-date">FEB 2020 — JAN 2022</div>
       <div class="tl-role">Technical Support Customer Service</div>
       <div class="tl-company">Egypt</div>
       <div class="tl-desc">100 calls/day, 50 resolved cases. Where I learned to stay organized when everything moves fast.</div>
-      <span class="tl-tag">Support</span>
-      <span class="tl-tag">Documentation</span>
+      <span class="tag">Support</span><span class="tag">Documentation</span>
     </div>
-
   </div>
 </section>
 
@@ -629,43 +394,16 @@
 
 <!-- SKILLS -->
 <section>
-  <div class="fade-in">
-    <div class="section-label">Technical Stack</div>
-    <div class="section-title">What I work with.</div>
-    <p class="section-sub">Tools I use daily, not just on a CV.</p>
-  </div>
-
-  <div class="skills-grid fade-in">
-    <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">Incorta</div>
-      <div class="skill-desc">My main platform. Built 20+ dashboards, extracted and monitored data across departments.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📈</div>
-      <div class="skill-name">Microsoft Excel</div>
-      <div class="skill-desc">Advanced level — pivot tables, VLOOKUP, data analysis. Used daily for KPI tracking and reporting.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🔷</div>
-      <div class="skill-name">Power BI</div>
-      <div class="skill-desc">Dashboard oversight and visualization. Supervised 150+ dashboards across 8 departments.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🐍</div>
-      <div class="skill-name">Python & SQL</div>
-      <div class="skill-desc">Pandas, NumPy for data analysis. SQL for queries and database handling.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📋</div>
-      <div class="skill-name">Google Forms & Automation</div>
-      <div class="skill-desc">Built validation workflows handling 4,000 responses/month — 30,155 total.</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🏥</div>
-      <div class="skill-name">Healthcare Data</div>
-      <div class="skill-desc">Deep domain knowledge: insurance operations, patient approvals, physician data, medical KPIs.</div>
-    </div>
+  <div class="sec-label">Technical Stack</div>
+  <div class="sec-title">What I work with.</div>
+  <p class="sec-sub">Tools I use daily, not just on a CV.</p>
+  <div class="skills-grid">
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">📊</div><div class="card-title">Incorta</div><div class="card-desc">My main platform. Built 20+ dashboards, extracted and monitored data across departments.</div></div>
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">📈</div><div class="card-title">Microsoft Excel</div><div class="card-desc">Advanced level — pivot tables, VLOOKUP, data analysis. Used daily for KPI tracking and reporting.</div></div>
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">🔷</div><div class="card-title">Power BI</div><div class="card-desc">Dashboard oversight and visualization. Supervised 150+ dashboards across 8 departments.</div></div>
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">🐍</div><div class="card-title">Python & SQL</div><div class="card-desc">Pandas, NumPy for data analysis. SQL for queries and database handling.</div></div>
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">📋</div><div class="card-title">Google Forms & Automation</div><div class="card-desc">Built validation workflows handling 4,000 responses/month — 30,155 total.</div></div>
+    <div class="card"><div style="font-size:22px;margin-bottom:10px;">🏥</div><div class="card-title">Healthcare Data</div><div class="card-desc">Deep domain knowledge: insurance operations, patient approvals, physician data, medical KPIs.</div></div>
   </div>
 </section>
 
@@ -673,460 +411,61 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="contact-box fade-in">
+  <div class="contact-box">
     <h2>Let's talk.</h2>
-    <p>Open to data analyst, BI analyst, and operations roles.<br>Based in Sheikh Zayed, Giza — open to hybrid or remote.</p>
+    <p>Open to Data Analyst, BI Analyst, Operations, and Contracts roles.<br>Based in Sheikh Zayed, Giza — open to hybrid or remote.</p>
     <div class="contact-links">
       <a href="mailto:Mariamsaeed955@gmail.com" class="btn btn-primary">Send Email</a>
       <a href="https://www.linkedin.com/in/mariam-haggag" target="_blank" class="btn btn-ghost">LinkedIn</a>
     </div>
-    <p style="margin-top:20px;font-size:12px;color:var(--text3);font-family:var(--mono);">+201007840026</p>
+    <p style="margin-top:20px;font-size:12px;color:#64748b;font-family:'JetBrains Mono',monospace;">+201007840026</p>
   </div>
 </section>
 
 <script>
-// COUNTER ANIMATION
 function animateCounter(el) {
-  const target = parseInt(el.dataset.target);
+  const target = parseInt(el.dataset.target) || 0;
   const suffix = el.dataset.suffix || '';
   const prefix = el.dataset.prefix;
   const duration = 2000;
   const start = performance.now();
-
   function update(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
+    const progress = Math.min((now - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
     const current = Math.floor(eased * target);
-
-    if (prefix) {
-      el.textContent = prefix;
-    } else {
-      el.textContent = current.toLocaleString() + suffix;
-    }
-
+    el.textContent = prefix ? prefix : current.toLocaleString() + suffix;
     if (progress < 1) requestAnimationFrame(update);
   }
   requestAnimationFrame(update);
 }
 
-// INTERSECTION OBSERVER
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-// Start counters when hero is visible
-const counterEls = document.querySelectorAll('.counter-num');
-let countersStarted = false;
-const heroObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting && !countersStarted) {
-    countersStarted = true;
-    setTimeout(() => {
-      counterEls.forEach(el => animateCounter(el));
-    }, 400);
+let started = false;
+const io = new IntersectionObserver(entries => {
+  if (entries[0].isIntersecting && !started) {
+    started = true;
+    setTimeout(() => document.querySelectorAll('.counter-num').forEach(animateCounter), 300);
   }
-}, { threshold: 0.5 });
-heroObserver.observe(document.querySelector('.counters'));
+}, { threshold: 0.3 });
+io.observe(document.querySelector('.counters'));
 
-// CHARTS
-const chartDefaults = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      labels: { color: '#94a3b8', font: { family: 'Inter', size: 11 } }
-    }
-  }
-};
-
-const gridColor = 'rgba(30,45,74,0.8)';
-const tickColor = '#64748b';
-
-// Teams Chart
-new Chart(document.getElementById('teamsChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Reception', 'Housekeeping', 'Med. Secretary', 'Sales Reps', 'CT Operators', 'X-Ray Tech', 'MRI Operators', 'Nursing'],
-    datasets: [{
-      label: 'Headcount',
-      data: [180, 21, 44, 22, 61, 69, 76, 330],
-      backgroundColor: [
-        'rgba(59,130,246,0.7)', 'rgba(6,182,212,0.7)',
-        'rgba(59,130,246,0.5)', 'rgba(6,182,212,0.5)',
-        'rgba(16,185,129,0.7)', 'rgba(16,185,129,0.6)',
-        'rgba(16,185,129,0.5)', 'rgba(16,185,129,0.4)',
-      ],
-      borderRadius: 4, borderSkipped: false,
-    }]
-  },
-  options: {
-    ...chartDefaults,
-    scales: {
-      x: { ticks: { color: tickColor, font: { size: 9 } }, grid: { color: gridColor } },
-      y: { ticks: { color: tickColor }, grid: { color: gridColor } }
-    }
-  }
-});
-
-// Growth Chart
-new Chart(document.getElementById('growthChart'), {
-  type: 'line',
-  data: {
-    labels: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov', 'Jan', 'Mar', 'May'],
-    datasets: [{
-      label: 'Monthly Responses',
-      data: [800, 1100, 1900, 2400, 2800, 3200, 3600, 3800, 4000],
-      borderColor: '#3b82f6',
-      backgroundColor: 'rgba(59,130,246,0.08)',
-      fill: true, tension: 0.4, pointRadius: 3,
-      pointBackgroundColor: '#3b82f6',
-    }]
-  },
-  options: {
-    ...chartDefaults,
-    scales: {
-      x: { ticks: { color: tickColor, font: { size: 9 } }, grid: { color: gridColor } },
-      y: { ticks: { color: tickColor }, grid: { color: gridColor } }
-    }
-  }
-});
-
-// Pie Chart
-new Chart(document.getElementById('pieChart'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Non-Medical (267)', 'Medical (536)'],
-    datasets: [{
-      data: [267, 536],
-      backgroundColor: ['rgba(59,130,246,0.8)', 'rgba(16,185,129,0.8)'],
-      borderColor: ['#0a0e1a'],
-      borderWidth: 3,
-    }]
-  },
-  options: { ...chartDefaults, cutout: '65%' }
-});
-
-// Approvals Chart
-new Chart(document.getElementById('approvalsChart'), {
-  type: 'bar',
-  data: {
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Sun'],
-    datasets: [
-      {
-        label: 'Total Processed',
-        data: [80, 75, 82, 78, 80],
-        backgroundColor: 'rgba(59,130,246,0.4)',
-        borderRadius: 4,
-      },
-      {
-        label: 'Approved (~95%)',
-        data: [76, 71, 78, 74, 76],
-        backgroundColor: 'rgba(16,185,129,0.7)',
-        borderRadius: 4,
-      }
-    ]
-  },
-  options: {
-    ...chartDefaults,
-    scales: {
-      x: { ticks: { color: tickColor }, grid: { color: gridColor } },
-      y: { ticks: { color: tickColor }, grid: { color: gridColor }, max: 100 }
-    }
-  }
-});
-
-// SMOOTH SCROLL
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     e.preventDefault();
-    document.querySelector(a.getAttribute('href'))
-      ?.scrollIntoView({ behavior: 'smooth' });
+    const el = document.querySelector(a.getAttribute('href'));
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+const gc = 'rgba(30,45,74,0.8)', tc = '#64748b';
+const cd = { responsive:true, maintainAspectRatio:false, plugins:{ legend:{ labels:{ color:'#94a3b8', font:{ family:'Inter', size:11 } } } } };
+
+new Chart(document.getElementById('teamsChart'), { type:'bar', data:{ labels:['Reception','Housekeeping','Med. Sec.','Sales','CT Op.','X-Ray','MRI Op.','Nursing'], datasets:[{ label:'Headcount', data:[180,21,44,22,61,69,76,330], backgroundColor:['rgba(59,130,246,.7)','rgba(6,182,212,.7)','rgba(59,130,246,.5)','rgba(6,182,212,.5)','rgba(16,185,129,.7)','rgba(16,185,129,.6)','rgba(16,185,129,.5)','rgba(16,185,129,.4)'], borderRadius:4 }] }, options:{ ...cd, scales:{ x:{ ticks:{ color:tc, font:{size:9} }, grid:{ color:gc } }, y:{ ticks:{ color:tc }, grid:{ color:gc } } } } });
+
+new Chart(document.getElementById('growthChart'), { type:'line', data:{ labels:['Jan','Mar','May','Jul','Sep','Nov','Jan','Mar','May'], datasets:[{ label:'Monthly Responses', data:[800,1100,1900,2400,2800,3200,3600,3800,4000], borderColor:'#3b82f6', backgroundColor:'rgba(59,130,246,.08)', fill:true, tension:0.4, pointRadius:3, pointBackgroundColor:'#3b82f6' }] }, options:{ ...cd, scales:{ x:{ ticks:{ color:tc, font:{size:9} }, grid:{ color:gc } }, y:{ ticks:{ color:tc }, grid:{ color:gc } } } } });
+
+new Chart(document.getElementById('pieChart'), { type:'doughnut', data:{ labels:['Non-Medical (267)','Medical (536)'], datasets:[{ data:[267,536], backgroundColor:['rgba(59,130,246,.8)','rgba(16,185,129,.8)'], borderColor:['#0a0e1a'], borderWidth:3 }] }, options:{ ...cd, cutout:'65%' } });
+
+new Chart(document.getElementById('approvalsChart'), { type:'bar', data:{ labels:['Mon','Tue','Wed','Thu','Sun'], datasets:[{ label:'Total', data:[80,75,82,78,80], backgroundColor:'rgba(59,130,246,.4)', borderRadius:4 },{ label:'Approved', data:[76,71,78,74,76], backgroundColor:'rgba(16,185,129,.7)', borderRadius:4 }] }, options:{ ...cd, scales:{ x:{ ticks:{ color:tc }, grid:{ color:gc } }, y:{ ticks:{ color:tc }, grid:{ color:gc }, max:100 } } } });
 </script>
-
-
-<div class="divider"></div>
-<section id="corporate">
-  <div class="fade-in">
-    <div class="section-label">Corporate Operations</div>
-    <div class="section-title">From paper to performance.</div>
-    <p class="section-sub">A 3-year transformation of corporate contracts and sales support at Alfa Scan — built from scratch, documented, automated, and made scalable.</p>
-  </div>
-
-  <div class="fade-in" style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:48px;">
-    <div style="background:var(--bg2);padding:28px 20px;text-align:center;" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--bg2)'">
-      <div style="font-family:var(--mono);font-size:22px;font-weight:600;color:#ef4444;margin-bottom:8px;">2023</div>
-      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Manual</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.6;">Paper documents. Phone calls. Individual memory. No tracking, no templates, no visibility.</div>
-    </div>
-    <div style="background:var(--bg2);padding:28px 20px;text-align:center;" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--bg2)'">
-      <div style="font-family:var(--mono);font-size:22px;font-weight:600;color:var(--amber);margin-bottom:8px;">2024</div>
-      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Structured</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.6;">WhatsApp group for documented requests. Task-tracking sheets. Master data. Electronic templates with digital stamps. Around 90 price lists prepared, ~80% of companies renewed in H1.</div>
-    </div>
-    <div style="background:var(--bg2);padding:28px 20px;text-align:center;" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--bg2)'">
-      <div style="font-family:var(--mono);font-size:22px;font-weight:600;color:var(--accent);margin-bottom:8px;">2025</div>
-      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Digital</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.6;">Google Form for all requests with auto-tracking. Historical data prepared in Excel and coordinated with the Application Team. 67 companies renewed in January 2025 alone.</div>
-    </div>
-    <div style="background:var(--bg2);padding:28px 20px;text-align:center;" onmouseover="this.style.background='var(--bg3)'" onmouseout="this.style.background='var(--bg2)'">
-      <div style="font-family:var(--mono);font-size:22px;font-weight:600;color:var(--green);margin-bottom:8px;">2026</div>
-      <div style="font-size:13px;font-weight:600;margin-bottom:8px;">Performance-Driven</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.6;">KPIs introduced in March 2026. Dashboards with customer segmentation, account owners, and monthly targets. Data tells the story now.</div>
-    </div>
-  </div>
-
-  <div class="fade-in">
-    <div class="section-label">What I built</div>
-    <p class="section-sub" style="margin-bottom:24px;">Six areas of the operation, all designed, documented, and handed over as scalable systems.</p>
-  </div>
-
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;" class="fade-in">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">System & Data Management</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Millensys & CRM Control</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Managed all corporate entity additions, removals, and edits on Millensys. Updated price lists for all active clients. Added and removed exam types as needed. Managed discount rates per entity and kept operating instructions current. In March 2024, exam prices were updated and a CT contrast exam was introduced, requiring different price lists and continuous CRM adjustments per entity.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Millensys</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">CRM</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Oracle</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Corporate Sales Support</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Contracts, Pricing & Letters</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Handled new contracts (deferred and cash), price quotations, discount letters, and price increase letters. Built electronic templates for all document types with digital stamps, eliminating manual drafting entirely.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">E-signatures</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Digital Stamps</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Templates</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Internal Coordination</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Finance, Collections & Reception</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Maintained shared folder with Finance containing all price lists, contracts, and discount sheets. Updated the Collections tracking sheet with every new or removed entity. Sent operating instruction updates to Reception and Call Center via email with every change, and updated their entity sheet in real time.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Shared Folders</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Tracking Sheets</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">IT Coordination</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Oracle & Price List Requests</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Sent monthly retroactive pricing lists to IT. Submitted Oracle integration requests for new entities. Coordinated new price list creation requests at year-start or when volume required it.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Oracle</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">IT Integration</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Physician Sales Support</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Doctors & Hospitals</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Onboarded new physicians and hospitals into Millensys after receiving their data. Generated monthly revenue reports per physician. Prepared contracts, price offers, and renewal documents for hospital accounts.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Physician Data</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.2);color:var(--accent2);">Revenue Reports</span>
-      </div>
-    </div>
-
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .2s;" onmouseover="this.style.borderColor='var(--green)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px;">Knowledge Management</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:10px;">Booklet, Videos & Training</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.6;">Created a full Knowledge Base and a Corporate Booklet covering all department interactions. Recorded step-by-step training videos for every key workflow. Trained one team member in 2025 and another in 2026 using a different, more structured approach each time.</div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Knowledge Base</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Training Videos</span>
-        <span style="padding:2px 8px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Booklet</span>
-      </div>
-    </div>
-  </div>
-
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:40px;" class="fade-in">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:26px;margin-bottom:10px;">🎬</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">ERP Contracts</div>
-      <div style="font-size:11px;color:var(--text3);">Full contracts workflow on the ERP system</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:26px;margin-bottom:10px;">🎬</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Add / Remove Exams</div>
-      <div style="font-size:11px;color:var(--text3);">How to add or delete exam types per entity</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:26px;margin-bottom:10px;">🎬</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Discount Rates</div>
-      <div style="font-size:11px;color:var(--text3);">Setting and updating discount rates per client</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:26px;margin-bottom:10px;">🎬</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">Create Price Lists</div>
-      <div style="font-size:11px;color:var(--text3);">Building and copying new price lists from scratch</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:18px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-      <div style="font-size:26px;margin-bottom:10px;">🎬</div>
-      <div style="font-size:12px;font-weight:600;margin-bottom:4px;">2025 Full Overview</div>
-      <div style="font-size:11px;color:var(--text3);">Complete end-to-end department walkthrough</div>
-    </div>
-  </div>
-
-  <div style="padding:32px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;" class="fade-in">
-    <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:12px;text-transform:uppercase;letter-spacing:.1em;">The Real Achievement</div>
-    <p style="font-size:15px;line-height:1.7;color:var(--text);">"The real achievement was not simply creating spreadsheets or forms. It was transforming a process that depended heavily on paper, memory and individual follow-up into a more structured, documented, trackable, collaborative and scalable workflow."</p>
-    <p style="margin-top:12px;font-size:13px;color:var(--text2);">I did not just manage the process. I evolved it. I built something that can continue, scale, and improve beyond one person.</p>
-  </div>
-</section>
-
-<div class="divider"></div>
-<section id="samples">
-  <div class="fade-in">
-    <div class="section-label">Work Samples</div>
-    <div class="section-title">Real tools I built.</div>
-    <p class="section-sub">Systems used daily by the team at Alfa Scan. Data blurred for confidentiality.</p>
-  </div>
-  <div class="charts-grid fade-in" style="margin-bottom:20px;">
-    <div class="chart-card" style="padding:0;overflow:hidden;">
-      <div style="width:100%;height:200px;background:var(--bg3);border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px;font-family:var(--mono);">[ Screenshot — confidential ]</div>
-      <div style="padding:18px 20px;">
-        <div class="chart-sub" style="margin-bottom:4px;color:var(--accent2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;">Workflow Automation</div>
-        <div class="chart-title">Operating Instructions Form 2026</div>
-        <p style="font-size:12px;color:var(--text3);margin-top:6px;line-height:1.5;">Designed and deployed a structured Google Form for collecting operating instructions across all Alfa Scan branches — with file upload, validation, and auto-routing.</p>
-      </div>
-    </div>
-    <div class="chart-card" style="padding:0;overflow:hidden;">
-      <div style="width:100%;height:200px;background:var(--bg3);border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:center;color:var(--text3);font-size:12px;font-family:var(--mono);">[ Screenshot — confidential ]</div>
-      <div style="padding:18px 20px;">
-        <div class="chart-sub" style="margin-bottom:4px;color:var(--accent2);font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.1em;">Live Dashboard</div>
-        <div class="chart-title">Contracts & Renewals Registry 2026</div>
-        <p style="font-size:12px;color:var(--text3);margin-top:6px;line-height:1.5;">Live contracts dashboard connected directly to Google Sheets — real-time search, filters by status, account manager, supervisor, and team. Auto-updates every minute.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="fade-in">
-    <div class="section-label" style="margin-top:40px;">Documents & Agreements</div>
-    <div class="section-title" style="font-size:26px;">Built for speed. Signed digitally.</div>
-    <p class="section-sub">Designed the full document workflow — from draft to e-signature to archive.</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;" class="fade-in">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">📄</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Contract Templates</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">Standardized templates for all contract types — pricing, renewals, new clients. One-click generation.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Automated ✓</span>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">✍️</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Electronic Signatures</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">E-signature workflow replacing physical signatures — faster approvals, full audit trail, zero paper.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Paperless ✓</span>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">🔏</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Electronic Stamps</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">Digital official stamps for agreements and correspondence — legally compliant, instantly applied.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Digital ✓</span>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">📬</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Official Letters</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">Templated official correspondence — price increase notices, renewal reminders, client communication.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Standardized ✓</span>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">🗂️</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Document Archive</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">Organized digital filing for all contracts — searchable, version-controlled, always accessible.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Organized ✓</span>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-size:32px;margin-bottom:12px;">⚡</div>
-      <div style="font-size:14px;font-weight:600;margin-bottom:6px;">Agreement Workflow</div>
-      <div style="font-size:12px;color:var(--text3);line-height:1.5;">End-to-end process from contract request to signed agreement — designed to eliminate bottlenecks.</div>
-      <span style="display:inline-block;margin-top:10px;padding:3px 10px;border-radius:20px;font-size:10px;font-family:var(--mono);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);color:var(--green);">Streamlined ✓</span>
-    </div>
-  </div>
-</section>
-
-<!-- CLIFTONSTRENGTHS -->
-<div class="divider"></div>
-<section id="strengths">
-  <div class="fade-in">
-    <div class="section-label">CliftonStrengths® — Gallup Assessment</div>
-    <div class="section-title">How I naturally work.</div>
-    <p class="section-sub">My top 5 strengths from the official Gallup CliftonStrengths 34 assessment — measured, not claimed.</p>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:12px;" class="fade-in">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">#1 · Executing</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Responsibility</div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.5;">When I commit to something, it gets done. No follow-up needed. I take psychological ownership of everything.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">#2 · Relationship</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Relator</div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.5;">I build deep, trust-based connections. I work best with people who are as committed as I am.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">#3 · Executing</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Arranger</div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.5;">I see how all the pieces fit and reorganize them for maximum efficiency. Complex systems are where I thrive.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">#4 · Executing</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Belief</div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.5;">My values guide every decision. I work with conviction and I do not cut corners, ever.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:20px 16px;text-align:center;transition:all .2s;" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:6px;">#5 · Strategic</div>
-      <div style="font-size:13px;font-weight:700;margin-bottom:6px;">Learner</div>
-      <div style="font-size:11px;color:var(--text2);line-height:1.5;">Genuinely addicted to learning. Every course fills a real gap. Currently pointed at AI in healthcare.</div>
-    </div>
-  </div>
-  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:16px;" class="fade-in">
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all .2s;opacity:0.85;" onmouseover="this.style.borderColor='var(--accent2)';this.style.opacity='1'" onmouseout="this.style.borderColor='var(--border)';this.style.opacity='0.85'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">#6 · Strategic</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Ideation</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.4;">I find connections between things others see as unrelated. The workflows I built came from this.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all .2s;opacity:0.85;" onmouseover="this.style.borderColor='var(--accent2)';this.style.opacity='1'" onmouseout="this.style.borderColor='var(--border)';this.style.opacity='0.85'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">#7 · Relationship</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Empathy</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.4;">I sense what teams need before they say it. This is why cross-functional coordination works well for me.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all .2s;opacity:0.85;" onmouseover="this.style.borderColor='var(--accent2)';this.style.opacity='1'" onmouseout="this.style.borderColor='var(--border)';this.style.opacity='0.85'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">#8 · Relationship</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Individualization</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.4;">I notice what makes each person unique. Training two different team members required two different approaches.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all .2s;opacity:0.85;" onmouseover="this.style.borderColor='var(--accent2)';this.style.opacity='1'" onmouseout="this.style.borderColor='var(--border)';this.style.opacity='0.85'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">#9 · Strategic</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Intellection</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.4;">I think deeply before acting. This is why my systems rarely need to be rebuilt from scratch.</div>
-    </div>
-    <div style="background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all .2s;opacity:0.85;" onmouseover="this.style.borderColor='var(--accent2)';this.style.opacity='1'" onmouseout="this.style.borderColor='var(--border)';this.style.opacity='0.85'">
-      <div style="font-family:var(--mono);font-size:10px;color:var(--accent2);margin-bottom:6px;">#10 · Relationship</div>
-      <div style="font-size:12px;font-weight:700;margin-bottom:4px;">Adaptability</div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.4;">When my manager left in Sep 2025, I did not freeze. I adapted and kept everything running.</div>
-    </div>
-  </div>
-  <div style="margin-top:8px;padding:16px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;font-size:12px;color:var(--text3);text-align:center;" class="fade-in">
-    Lead Domain: <strong style="color:var(--accent)">Executing</strong> &nbsp;·&nbsp;
-    By <strong style="color:var(--text2)">Gallup CliftonStrengths® 34</strong> &nbsp;·&nbsp;
-    Completed: <strong style="color:var(--text2)">September 2025</strong> &nbsp;·&nbsp;
-    Top 5 highlighted, 6-10 shown below
-  </div>
-</section>
 </body>
 </html>
